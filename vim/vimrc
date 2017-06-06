@@ -1,0 +1,74 @@
+set nocompatible               " be iMproved
+filetype off                   " required!
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
+" let Vundle manage Vundle required! 
+Bundle 'VundleVim/Vundle.vim'
+"Plugin
+" Plugin 'nsf/gocode', {'rtp': 'vim/'}
+" Plugin 'fatih/vim-go'
+Plugin 'Auto-Pairs'
+Plugin 'buflist'
+Plugin 'EasyGrep'
+Plugin 'The-NERD-tree'
+Plugin 'https://github.com/Lokaltog/vim-powerline.git'
+Plugin 'ctrlp.vim'
+Plugin 'AutoComplPop'
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'mattn/emmet-vim'
+" All of your Plugins must be added before the following line
+filetype plugin indent on    " reqiored
+" }
+
+"powerline
+set laststatus=2
+set t_Co=256
+let g:Powerline_symbols='unicode'
+set encoding=utf8
+let g:Powerline_stl_path_style = 'relative'
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+"myself config {
+au BufNewFile,BufRead *.npl setf lua
+
+let mapleader=";"
+let maplcoalleader="\\"
+"edit and affect the config file .vimrc
+nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+nnoremap <leader>sv :source ~/.vimrc<cr>
+inoremap <c-g> <left>
+"inoremap <c-h> <left>
+inoremap <c-l> <right>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+"indent
+augroup filetype_vim
+    autocmd!
+    autocmd filetype vim set foldmethod=marker
+augroup END 
+"line number
+set nu
+"set tab width
+set pastetoggle=<F2>
+"set nowrap
+set encoding=utf-8     ""Vim 的内部编码
+set termencoding=utf-8 "Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
+set fileencoding=utf-8 "Vim 当前编辑的文件在存储时的编码
+set fileencodings=ucs-bom,utf-8,gbk,default,latin1 "Vim 打开文件时的尝试使用的编码
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set showtabline=1
+"plugin shoutcut
+map <leader>vi :PluginInstall<cr>
+map <leader>ps :NERDTree<cr>
+"}
+
+set completeopt=longest,menu,preview  " 补全菜单样式"
+set dictionary+=$HOME/workspace/dictionary/words  "设置字典文件目录"
+set ignorecase  "查找忽略大小写"
