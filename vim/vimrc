@@ -67,6 +67,7 @@ set showtabline=1
 set ignorecase smartcase       "查找忽略大小写 但在有一个或以上大写字母时仍保持对大小写敏感
 set autochdir                  "自动切换当前目录为当前文件所在的目录"
 set incsearch                  "输入搜索内容时就显示搜索结果"
+set isk+=-                     "分割符排除 iskeywork
 "set hlsearch                   "搜索时高亮显示被找到的文本"
 "plugin shoutcut
 map <leader>vi :PluginInstall<cr>
@@ -76,5 +77,6 @@ map <leader>ps :NERDTree<cr>
 set completeopt=longest,menu,preview  " 补全菜单样式"
 set dictionary+=$HOME/workspace/notebook/vim/dictionary/words.dict  "设置字典文件目录"
 autocmd filetype javascript set dictionary=$HOME/workspace/notebook/vim/dictionary/javascript.dict
-autocmd filetype css set dictionary=$HOME/workspace/notebook/vim/dictionary/dict/css.dict
-autocmd filetype php set dictionary=$HOME/workspace/notebook/vim/dictionary/dict/php.dict
+autocmd filetype css set dictionary=$HOME/workspace/notebook/vim/dictionary/css.dict
+autocmd filetype html set dictionary=$HOME/workspace/notebook/vim/dictionary/html.dict
+autocmd filetype php set dictionary=$HOME/workspace/notebook/vim/dictionary/php.dict
