@@ -2,23 +2,46 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
-" let Vundle manage Vundle required! 
+" let Vundle manage Vundle required!
 Bundle 'VundleVim/Vundle.vim'
 "Plugin
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plugin 'fatih/vim-go'
+Plugin 'dkprice/vim-easygrep'
 Plugin 'Auto-Pairs'
-Plugin 'buflist'
-Plugin 'EasyGrep'
 Plugin 'The-NERD-tree'
 Plugin 'https://github.com/Lokaltog/vim-powerline.git'
 Plugin 'ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'AutoComplPop'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'alvan/vim-closetag'
+Plugin 'surround.vim'           " 快速首尾增删
+Plugin 'Tabular'                " 对齐插件
+Plugin 'Chiel92/vim-autoformat' " 自动对齐插件
+Plugin 'marijnh/tern_for_vim', {'do': 'npm install'} "js补全
+Plugin 'ggVGc/vim-fuzzysearch'  "模糊查找
+Plugin 'Valloric/MatchTagAlways'
+
 "Plugin 'mattn/emmet-vim'
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " reqiored
 " }
+
+au BufWrite * :Autoformat "自动对齐插件
+
+" ----------------------------------------------------------------------------
+" vim-fuzzysearch
+" ----------------------------------------------------------------------------
+nnoremap <leader><leader>/ :FuzzySearch<cr>
+
+" ----------------------------------------------------------------------------
+" tern_for_vim
+" ----------------------------------------------------------------------------
+let tern_show_signature_in_pum = 1
+let tern_show_argument_hints = 'on_hold'
+autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+autocmd FileType javascript setlocal omnifunc=tern#Complete
 
 "powerline
 set laststatus=2
@@ -30,7 +53,7 @@ let g:Powerline_stl_path_style = 'relative'
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 "myself config {
@@ -39,8 +62,10 @@ au BufNewFile,BufRead *.npl setf lua
 let mapleader=";"
 let maplcoalleader="\\"
 "edit and affect the config file .vimrc
+nnoremap <leader>t :Tab /
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 nnoremap <leader>sv :source ~/.vimrc<cr>
+nnoremap <Leader>fu :CtrlPFunky<Cr>
 inoremap <c-g> <left>
 "inoremap <c-h> <left>
 inoremap <c-l> <right>
@@ -48,35 +73,41 @@ inoremap <c-j> <down>
 inoremap <c-k> <up>
 "indent
 augroup filetype_vim
-    autocmd!
-    autocmd filetype vim set foldmethod=marker
-augroup END 
-"line number
-set nu
+	autocmd!
+	autocmd filetype vim set foldmethod=marker
+augroup END
+
 "set tab width
 set pastetoggle=<F2>
 "set nowrap
-set encoding=utf-8     ""Vim 的内部编码
-set termencoding=utf-8 "Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
-set fileencoding=utf-8 "Vim 当前编辑的文件在存储时的编码
-set fileencodings=ucs-bom,utf-8,gbk,default,latin1 "Vim 打开文件时的尝试使用的编码
+
+set encoding=utf-8                                 " Vim 的内部编码
+set termencoding=utf-8                             " Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
+set fileencoding=utf-8                             " Vim 当前编辑的文件在存储时的编码
+set fileencodings=ucs-bom,utf-8,gbk,default,latin1 " Vim 打开文件时的尝试使用的编码
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set showtabline=1
+"set smarttab
+"set autoindent
 set ignorecase smartcase       "查找忽略大小写 但在有一个或以上大写字母时仍保持对大小写敏感
 set autochdir                  "自动切换当前目录为当前文件所在的目录"
 set incsearch                  "输入搜索内容时就显示搜索结果"
 set isk+=-                     "分割符排除 iskeywork
+set nu                         "line number
 "set hlsearch                   "搜索时高亮显示被找到的文本"
 "plugin shoutcut
 map <leader>vi :PluginInstall<cr>
 map <leader>ps :NERDTree<cr>
 "}
 
-set completeopt=longest,menu,preview  " 补全菜单样式"
-set dictionary+=$HOME/workspace/notebook/vim/dictionary/words.dict  "设置字典文件目录"
-autocmd filetype javascript set dictionary=$HOME/workspace/notebook/vim/dictionary/javascript.dict
-autocmd filetype css set dictionary=$HOME/workspace/notebook/vim/dictionary/css.dict
-autocmd filetype html set dictionary=$HOME/workspace/notebook/vim/dictionary/html.dict
-autocmd filetype php set dictionary=$HOME/workspace/notebook/vim/dictionary/php.dict
+set completeopt=longest,menu,preview                               " 补全菜单样式   "
+set dictionary+=$HOME/workspace/notebook/vim/dictionary/words.dict " 设置字典文件目录 "
+autocmd filetype javascript set dictionary+=$HOME/workspace/notebook/vim/dictionary/javascript.dict
+autocmd filetype css set dictionary+=$HOME/workspace/notebook/vim/dictionary/css.dict
+autocmd filetype html set dictionary+=$HOME/workspace/notebook/vim/dictionary/css.dict
+autocmd filetype html set dictionary+=$HOME/workspace/notebook/vim/dictionary/html.dict
+autocmd filetype php set dictionary+=$HOME/workspace/notebook/vim/dictionary/php.dict
+
+autocmd BufNewFile,BufRead *.page set filetype=lua
