@@ -4,7 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 " let Vundle manage Vundle required!
 Bundle 'VundleVim/Vundle.vim'
-"Plugin
+" Plugin
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plugin 'fatih/vim-go'
 Plugin 'dkprice/vim-easygrep'
@@ -16,11 +16,11 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'AutoComplPop'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'alvan/vim-closetag'
-Plugin 'surround.vim'           " 快速首尾增删
-Plugin 'Tabular'                " 对齐插件
-Plugin 'Chiel92/vim-autoformat' " 自动对齐插件
-Plugin 'marijnh/tern_for_vim', {'do': 'npm install'} "js补全
-Plugin 'ggVGc/vim-fuzzysearch'  "模糊查找
+Plugin 'surround.vim'                                " 快速首尾增删
+Plugin 'Tabular'                                     " 对齐插件
+Plugin 'Chiel92/vim-autoformat'                      " 自动对齐插件
+Plugin 'marijnh/tern_for_vim', {'do': 'npm install'} " js补全
+Plugin 'ggVGc/vim-fuzzysearch'                       " 模糊查找
 Plugin 'Valloric/MatchTagAlways'
 
 "Plugin 'mattn/emmet-vim'
@@ -28,7 +28,10 @@ Plugin 'Valloric/MatchTagAlways'
 filetype plugin indent on    " reqiored
 " }
 
-au BufWrite * :Autoformat "自动对齐插件
+" ----------------------------------------------------------------------------
+" vim-autoformat
+" ----------------------------------------------------------------------------
+au BufWrite * :Autoformat "自动格式化插件
 
 " ----------------------------------------------------------------------------
 " vim-fuzzysearch
@@ -57,15 +60,18 @@ if has("autocmd")
 endif
 
 "myself config {
-au BufNewFile,BufRead *.npl setf lua
 
 let mapleader=";"
 let maplcoalleader="\\"
 "edit and affect the config file .vimrc
-nnoremap <leader>t :Tab /
-nnoremap <leader>ev :vsplit ~/.vimrc<cr>
-nnoremap <leader>sv :source ~/.vimrc<cr>
-nnoremap <Leader>fu :CtrlPFunky<Cr>
+"plugin shoutcut
+nnoremap <leader>vs :PluginInstall<cr>   "搜索插件
+nnoremap <leader>vi :PluginInstall<cr>   "安装插件
+nnoremap <leader>ps :NERDTree<cr>        "文件树
+nnoremap <leader>t  :Tab /               "对齐插件
+nnoremap <leader>ev :vsplit ~/.vimrc<cr> "编辑.vimrc
+nnoremap <leader>sv :source ~/.vimrc<cr> "更新.vimrc
+nnoremap <Leader>fu :CtrlPFunky<Cr>      "搜索函数
 inoremap <c-g> <left>
 "inoremap <c-h> <left>
 inoremap <c-l> <right>
@@ -97,11 +103,9 @@ set incsearch                  "输入搜索内容时就显示搜索结果"
 set isk+=-                     "分割符排除 iskeywork
 set nu                         "line number
 "set hlsearch                   "搜索时高亮显示被找到的文本"
-"plugin shoutcut
-map <leader>vi :PluginInstall<cr>
-map <leader>ps :NERDTree<cr>
 "}
 
+" 字典补全
 set completeopt=longest,menu,preview                               " 补全菜单样式   "
 set dictionary+=$HOME/workspace/notebook/vim/dictionary/words.dict " 设置字典文件目录 "
 autocmd filetype javascript set dictionary+=$HOME/workspace/notebook/vim/dictionary/javascript.dict
@@ -110,4 +114,5 @@ autocmd filetype html set dictionary+=$HOME/workspace/notebook/vim/dictionary/cs
 autocmd filetype html set dictionary+=$HOME/workspace/notebook/vim/dictionary/html.dict
 autocmd filetype php set dictionary+=$HOME/workspace/notebook/vim/dictionary/php.dict
 
+" 文件关联
 autocmd BufNewFile,BufRead *.page set filetype=lua
