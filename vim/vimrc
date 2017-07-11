@@ -31,7 +31,8 @@ filetype plugin indent on    " reqiored
 " ----------------------------------------------------------------------------
 " vim-autoformat
 " ----------------------------------------------------------------------------
-au BufWrite * :Autoformat "自动格式化插件
+nnoremap <leader>ff :Autoformat<cr>
+"au BufWrite * :Autoformat "自动格式化插件
 
 " ----------------------------------------------------------------------------
 " vim-fuzzysearch
