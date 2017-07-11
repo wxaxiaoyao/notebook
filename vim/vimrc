@@ -21,12 +21,20 @@ Plugin 'Tabular'                                     " 对齐插件
 Plugin 'Chiel92/vim-autoformat'                      " 自动对齐插件
 Plugin 'marijnh/tern_for_vim', {'do': 'npm install'} " js补全
 Plugin 'ggVGc/vim-fuzzysearch'                       " 模糊查找
-Plugin 'Valloric/MatchTagAlways'
+Plugin 'Valloric/MatchTagAlways'                     " tag匹配高亮
+Plugin 'plasticboy/vim-markdown'                     " markdown插件
 
 "Plugin 'mattn/emmet-vim'
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " reqiored
 " }
+
+" ----------------------------------------------------------------------------
+" vim-markdown
+" ----------------------------------------------------------------------------
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_no_default_key_mappings=1
+let g:vim_markdown_frontmatter=1
 
 " ----------------------------------------------------------------------------
 " vim-autoformat
@@ -38,6 +46,16 @@ nnoremap <leader>ff :Autoformat<cr>
 " vim-fuzzysearch
 " ----------------------------------------------------------------------------
 nnoremap <leader><leader>/ :FuzzySearch<cr>
+
+" ----------------------------------------------------------------------------
+" tabular
+" ----------------------------------------------------------------------------
+"nnoremap <leader>t :Tab /
+nnoremap <leader>t" :Tab /"<cr>
+nnoremap <leader>t- :Tab /--<cr>
+nnoremap <leader>t/ :Tab /\/\/<cr>
+nnoremap <leader>t= :Tab /=<cr>
+nnoremap <leader>t: :Tab /:<cr>
 
 " ----------------------------------------------------------------------------
 " tern_for_vim
@@ -69,10 +87,10 @@ let maplcoalleader="\\"
 nnoremap <leader>vs :PluginInstall<cr>   "搜索插件
 nnoremap <leader>vi :PluginInstall<cr>   "安装插件
 nnoremap <leader>ps :NERDTree<cr>        "文件树
-nnoremap <leader>t  :Tab /               "对齐插件
 nnoremap <leader>ev :vsplit ~/.vimrc<cr> "编辑.vimrc
 nnoremap <leader>sv :source ~/.vimrc<cr> "更新.vimrc
-nnoremap <Leader>fu :CtrlPFunky<Cr>      "搜索函数
+nnoremap <Leader>fu :CtrlPFunky<cr>      "搜索函数
+
 inoremap <c-g> <left>
 "inoremap <c-h> <left>
 inoremap <c-l> <right>
@@ -103,6 +121,8 @@ set autochdir                  "自动切换当前目录为当前文件所在的
 set incsearch                  "输入搜索内容时就显示搜索结果"
 set isk+=-                     "分割符排除 iskeywork
 set nu                         "line number
+set rnu
+set fdm=marker
 "set hlsearch                   "搜索时高亮显示被找到的文本"
 "}
 
