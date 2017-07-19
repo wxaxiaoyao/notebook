@@ -1,0 +1,63 @@
+============================搭建VPN服务器=========================
+1 安装ppp yum install -y ppp  
+2 安装pptpd yum install pptpd   //  rpm -Uvh http://poptop.sourceforge.net/yum/stable/rhel6/pptp-release-current.noarch.rpm && yum install pptpd
+3 vim /etc/sysctl.conf 开启内核转发功能:
+  net.ipv4.ip_forward=1
+  sysctl -p  // 生效修改
+4 vim /etc/ppp/options.pptpd 添加dns服务器ip:
+  ms-dns 202.96.128.86
+  ms-dns 202.96.128.166
+5 vim /etc/ppp/chap-secrets 添加vpn用户:
+  test pptpd test *  // 格式见该文件注释, 保证用户在linux真实存在
+6 vim /etc/pptpd.conf 配置本地，接入ip:
+  localip 192.168.0.1  // 填本机ip
+  remoteip 192.168.0.234-238,192.168.0.245  // ip任意
+7 vim /etc/sysconfig/iptables  配置防火墙:
+  *filter  //在该节添加如下行
+  -A INPUT -p tcp -m tcp --dport 1723 -j ACCEPT 
+  -A INPUT -p tcp -m tcp --dport 47 -j ACCEPT 
+  -A INPUT -p gre -j ACCEPT 
+  -A INPUT -p udp -m udp --dport 53 -j ACCEPT
+  *nat   // 同上， 下行可不配置，功能外网转发功能
+  -A POSTROUTING -s 192.168.9.0/24 -o eth0 -j MASQUERADE
+8 service pptpd restart
+  service iptables restart 启动相关程序
+9 出错：取消/etc/pptpd.conf中debug注释，查看/var/log/messages相关日志，提取日志信息，百度求解。
+
+
+
+================================vbox安装====================================
+1 vim /etc/yum.repo.d/virtualbox.repo  添加如下行:
+[virtualbox]
+name=Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox
+baseurl=http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
+2 yum install VirtualBox-5.0
+3 yum install -y gcc kernel kernel-devel kernel-headers   // 查找kernel安装位置
+4 重启电脑  // KERN_DIR=/usr/src/kernels/2.6.32-573.22.1.el6.x86_64 /etc/init.d/vbox  // KERN_DIR填实际安装的位置
+5 service vboxdrv setup 启动vbox
+
+===============================网络配置===============================
+1 eth0 接口配置:/etc/sysconfig/network-scipts/ifcfg-eth0
+DEVICE=eth0
+HWADDR=C8:60:00:69:CE:04
+TYPE=Ethernet
+UUID=ff105f76-baaa-4a8d-95c2-efe85fd9ab23
+#接口随网络启动而自启动
+ONBOOT=yes
+NM_CONTROLLED=yes
+#静态ip
+BOOTPROTO=static
+IPADDR=192.168.20.51
+NETMASK=255.255.255.0
+GATEWAY=192.168.20.254
+#若无法解析域名，请配置DNS值
+DNS1=202.96.128.86
+DNS2=202.96.128.166
+#PEERDNS=yes
+2 DNS服务器配置: /etc/resolv.conf
+nameserver 202.96.128.86
+nameserver 202.96.128.166

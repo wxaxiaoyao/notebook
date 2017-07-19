@@ -1,0 +1,1 @@
+createobject("wscript.shell").run "e:\xiaoyao\filesync.bat",0 
