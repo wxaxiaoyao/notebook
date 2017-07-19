@@ -90,17 +90,13 @@ nnoremap <leader>ps :NERDTree<cr>        "文件树
 nnoremap <leader>ev :vsplit ~/.vimrc<cr> "编辑.vimrc
 nnoremap <leader>sv :source ~/.vimrc<cr> "更新.vimrc
 nnoremap <Leader>fu :CtrlPFunky<cr>      "搜索函数
+nnoremap <leader>zf $zf%                 "折叠
 
 inoremap <c-g> <left>
 "inoremap <c-h> <left>
 inoremap <c-l> <right>
 inoremap <c-j> <down>
 inoremap <c-k> <up>
-"indent
-augroup filetype_vim
-	autocmd!
-	autocmd filetype vim set foldmethod=marker
-augroup END
 
 "set tab width
 set pastetoggle=<F2>
