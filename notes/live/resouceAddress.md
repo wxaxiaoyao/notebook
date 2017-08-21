@@ -104,6 +104,10 @@ LUA
 * [gitlab api](https://docs.gitlab.com/ce/api/README.html)
 
 
+## 数据格式
+* [YAML](http://www.ruanyifeng.com/blog/2016/07/yaml.html?f=tt)
+
+
 ## 教学网站
 * [菜鸟教程](http://www.runoob.com/)
 * [W3School](http://www.w3school.com.cn/)
