@@ -1,0 +1,15 @@
+Sun Jul 23 15:56:45 2017 INFO logging file test
+Sun Jul 23 15:56:45 2017 DEBUG debugging...
+Sun Jul 23 15:56:45 2017 ERROR error!
+Sun Jul 23 15:57:52 2017 INFO {key = "test"}
+Sun Jul 23 15:57:52 2017 INFO logging file test
+Sun Jul 23 15:57:52 2017 DEBUG debugging...
+Sun Jul 23 15:57:52 2017 ERROR error!
+Sun Jul 23 16:08:42 2017 INFO {key = "test"}
+Sun Jul 23 16:08:42 2017 INFO logging file test
+Sun Jul 23 16:08:42 2017 DEBUG debugging...
+Sun Jul 23 16:08:42 2017 ERROR error!
+Sun Jul 23 16:08:59 2017 INFO {key = "test"}
+Sun Jul 23 16:08:59 2017 INFO logging file test
+Sun Jul 23 16:08:59 2017 DEBUG debugging...
+Sun Jul 23 16:08:59 2017 ERROR error!

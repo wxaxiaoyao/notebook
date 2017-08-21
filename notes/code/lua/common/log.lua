@@ -1,47 +1,28 @@
+--luarocks install lualogging
 
-local is_init = false          -- 模块是否已初始化
-local log_filename = "log.txt" -- 日志文件名
-local log_file = nil           -- 日志文件句柄
-local line_delimiter = "\n"    -- 换行符
+local logging = require "logging"
+local logging.console = require "console"
+local logging.file = require "logging.file"
 
--- 日志输出函数
-function log(content)
-	if not is_init then		
-		return
-	end
 
-	log_file:write(content)
-	log_file:write("\n")
+local logger = logging.file("test%s.log", "%Y-%m-%d")
 
+local log = {
+	-- 默认配置
+	config = {
+		console = {
+
+		}
+	}
+}
+
+
+-- 创建日志对象
+function log.new(self, config)
+	local logger = {}
+	setmetatable(logger, {__index=self})
+	logger.config = config
+
+	return logger
 end
-
--- 模块初始化
-function init() 
-	if is_init then
-		print("already init!!!")
-		return
-	end
-
-	log_file = io.open(log_filename, "a")
-
-	if not log_file then
-		print("open log file faild!!!")
-		return 
-	end
-
-	is_init = true
-
-end
-
--- 模块deinit
-function deinit() 
-	if not is_init then
-		return
-	end
-
-	log_file:close()
-end
-
-init()
-
 

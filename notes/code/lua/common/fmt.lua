@@ -1,4 +1,4 @@
-fmt = {}
+local fmt = {}
 
 -- @function: 打印table的内容，递归
 -- @param: tbl 要打印的table
@@ -34,4 +34,10 @@ function fmt.print(obj)
     end
 end
 
+
+function fmtPrint(s)
+	print(s)
+end
+
+return fmt
 -- PrintTable(x)
