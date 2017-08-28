@@ -195,3 +195,80 @@ zo           打开折叠
 
 2. vim支持lua：
 	安装vim-nox即可: apt-get install vim-nox  
+
+
+
+
+
+# vim
+## vundle管理插件
+>地址 https://github.com/VundleVim/Vundle.vim
+
+安装步骤:  
+1 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim  
+2 配置vimrc  
+```
+set nocompatible               " be iMproved
+filetype off                   " required!
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
+" let Vundle manage Vundle required! 
+Bundle 'VundleVim/Vundle.vim'
+" Plugin List
+" Plugin 'ctrlp.vim'
+" All of your Plugins must be added before the following line
+filetype plugin indent on    " reqiored
+" }
+```
+
+3 vim中执行:PluginInstall或者命令行中执行：vim +PluginInstall +qall
+
+>常用插件:  
+>Plugin 'AutoComplPop' # 自动补全
+>Plugin 'ctrlp.vim'    # 文件搜索  
+>Plugin 'The-NERD-tree' # 目录树  
+>Plugin 'Auto-Pairs'    # 括号匹配  
+>Plugin 'https://github.com/Lokaltog/vim-powerline.git' # 状态栏  
+>Plugin 'mattn/emmet-vim'  # html 插件
+>Plugin 'scrooloose/nerdcommenter' # 注释插件
+
+## 常用插件用法
+### Plugin 'scrooloose/nerdcommenter'  注释插件
+```
+<leader>cc   # 注释当前行或选择行   类似效果 <leader>cn  <leader>cs <leader>cy
+<leader>cu   # 解除注释
+<leader>c<space>  # 注释非注释切换  类似效果 <leader>ci
+```
+
+### vim-surround 插件
+ys  # 添加
+cs  # 转换 
+ds  # 删除 
+etc: ys2w" 两个单词加双引号
+
+
+##  vim常用配置
+[个人vim配置文件](https://github.com/wxaxiaoyao/notebook/blob/master/vim/vimrc)
+
+## vim 配置目录
+- /etc/vim
+- /usr/share/vim   `# /usr/share/vim/vim74/filetype.vim 文件类型脚本`
+- $HOME/.vim 
+
+## TODO
+- 字典补全
+
+## 参考
+https://github.com/ruanyl/bigvim  
+https://github.com/ruanyl/bigvim/blob/master/vimrc.bundles
+
+## vim 基本知识
+### 文本选择
+- [a|i][w|W|s|p]
+- % 配对
+
+### marker折叠
+- zf创建折叠
+- df删除折叠
+- zc关闭折叠
+- zo打开折叠

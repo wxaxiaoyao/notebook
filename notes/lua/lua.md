@@ -120,3 +120,84 @@
 
 ##知识链接  
 *[lua正则博客](http://www.cnblogs.com/meamin9/p/4502461.html)
+
+
+
+## lua luarocks安装
+```
+wget https://luarocks.org/releases/luarocks-2.4.1.tar.gz
+tar -zxvf luarocks-2.4.1.tar.gz
+cd luarocks-2.4.1
+./configure --lua-suffix=jit --with-lua-include=/usr/local/include/luajit-2.0
+sudo make bootstrap
+```
+
+### lua mysql
+```
+whereis mysql   # 查看include目录
+luarocks install luasql-mysql MYSQL_INCDIR=/usr/include/mysql  # MYSQL_INCDIR为上步查询目录
+```
+### nginx_lua环境搭建
+>搭建nginx lua环境,其实是nginx能够解释执行lua. 因为需源编译安装nginx同时需将lua解释器链接进去.具体步骤如下:   
+
+1 下载如下4个安装包,并将解压目录放于/ngx_lua目录下 (/ngx_lua目录可更换 解压命令tar -xzvf xxx.tar.gz)
+[nginx-1.13.4.tar.gz](http://nginx.org/download/nginx-1.13.4.tar.gz)
+[luajit-2.0.5.tar.gz](http://luajit.org/download/LuaJIT-2.0.5.tar.gz)
+[ngx_devel_kit-0.3.0.tar.gz](https://codeload.github.com/simpl/ngx_devel_kit/tar.gz/v0.3.0)
+[lua-nginx-module-0.10.10.tar.gz](https://codeload.github.com/openresty/lua-nginx-module/tar.gz/v0.10.10)
+
+2 源码安装luajit 并导出luajit库和头文件的环境变量
+```
+# 安装luajit    
+cd /ngx_lua/LuaJIT-2.0.5
+make 
+make install
+# lib和include是默认放在/usr/local/lib和usr/local/include
+# 导出环境变量
+export LUAJIT_LIB=/usr/local/lib    
+export LUAJIT_INC=/usr/local/include/luajit-2.0  
+```
+   
+3 源码安装nginx
+```
+cd /ngx_lua/nginx-1.13.4
+./configure --prefix=/nginx --with-ld-opt="-L /usr/local/lib" --add-module=/ngx_lua/ngx_devel_kit-0.3.0 --add-module=/ngx_lua/lua-nginx-module-0.10.10
+# --add-module="为module源码目录"
+# 若缺库可尝试安装对应的库即可
+# apt-get -qq -y install libpcre3
+# apt-get -qq -y install libpcre3-dev
+# apt-get -qq -y install zlib1g-dev
+# apt-get -qq -y install libssl-dev
+make -j2
+make install
+```
+
+4 验证安装
+```
+cd /nginx/conf; vim nginx.conf  # 编辑nginx配置文件, 添加如下内容:
+location /hello { 
+default_type 'text/plain'; 
+content_by_lua 'ngx.say("hello, lua")'; 
+}
+# 启动nginx
+/nginx/sbin/nginx
+# 访问localhost/hello  返回hello lua页面内容
+```
+
+5 参考
+* [http://www.cnblogs.com/yjf512/archive/2012/03/27/2419577.html](http://www.cnblogs.com/yjf512/archive/2012/03/27/2419577.html)
+* [https://github.com/openresty/lua-nginx-module#installation](https://github.com/openresty/lua-nginx-module#installation)
+* [linux动态加载方式](http://blog.csdn.net/pa5201314/article/details/44876931)
+* [nginx configure参数解析](http://www.cnblogs.com/felixzh/p/6283791.html)
+
+
+## luarocks 常用库
+* luarocks install lua-resty-http   # http 客户端
+* luarocks install lua-cjson      # json 编码
+
+## nginx lua 开发教程
+[nginx开发入门到精通](http://tengine.taobao.org/book/)
+[http://jinnianshilongnian.iteye.com/blog/2186448](http://jinnianshilongnian.iteye.com/blog/2186448)
+
+
+[lua博客教程](http://www.cnblogs.com/stephen-liu74/archive/2012/07/30/2487201.html)

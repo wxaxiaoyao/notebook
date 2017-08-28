@@ -44,35 +44,36 @@
 * [GitHub flavored markdown](https://help.github.com/categories/writing-on-github/)
 * [Cmd Markdown](https://www.zybuluo.com/mdeditor)
 
-## PHP:
+### PHP:
 ---
 #### PHP框架
 * [composer PHP包管理器](http://docs.phpcomposer.com/)
 * [laravel框架API](https://laravel.com/api/5.2/index.html)
 * [easywechat微信第三方SDK官网](https://easywechat.org/)
 * [Faker is a PHP library that generates fake data for you](https://github.com/fzaninotto/Faker)
+* [laravel](http://d.laravel-china.org/docs/5.4)
 
-IM即时通讯
---
+### IM即时通讯
+---
 * [融云IM](http://www.rongcloud.cn/docs/)
 
-微信
---
+### 微信
+---
 * [微信公众号开发文档](https://mp.weixin.qq.com/wiki)
 
-证书
---
+### 证书
+---
 * [免费 Https 证书（Let's Encrypt）申请与配置](https://keelii.github.io/2016/06/12/free-https-cert-lets-encrypt-apply-install/)
 * [沃通](https://buy.wosign.com/)
 
 
-测试
---
+### 测试
+---
 * [禅道](http://www.zentao.net/)
 
 
-GO
---
+### GO
+---
 * [GO 安装包下载地址](https://golang.org/dl/)
 * [GO中国](http://www.golangtc.com)
 * [GO API文档](http://docscn.studygolang.com/pkg/)
@@ -81,16 +82,15 @@ GO
 * [go WebSocket](https://github.com/gorilla/websocket)
 * [redis中文网](http://www.redis.net.cn/)
 
-
-NPL 
---
+### NPL 
+---
 * [keepwork](http://keepwork.com/)
 * [NPLRuntime](https://github.com/LiXizhi/NPLRuntime/wiki)
 * [wikicraft项目地址](https://github.com/tatfook/wikicraft)
 
 
-LUA 
---
+### LUA 
+---
 * [LUA官方网站](http://www.lua.org/pil/contents.html)
 * [LUA DataBase](http://keplerproject.github.io/luasql)
 * [luarocks lua模块包管理器](https://luarocks.org/)
@@ -101,6 +101,9 @@ LUA
 ### lua 库
 * [lua-cjson](https://www.kyne.com.au/~mark/software/lua-cjson-manual.html)
 * [luajwt](https://github.com/x25/luajwt)
+* [lua-resty-template](https://github.com/bungle/lua-resty-template)
+* [lualogging](http://neopallium.github.io/lualogging/)
+* [luasql](http://keplerproject.github.io/luasql/)
 
 ## 软件包地址
 * [vs 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs)
@@ -149,4 +152,6 @@ LUA
 ## 其它
 * [四种常见的 POST 提交数据方式](https://imququ.com/post/four-ways-to-post-data-in-http.html)
   
-  
+## 博客
+* [lidabo](http://www.cnblogs.com/lidabo/p/4171664.html)
+* [vamei](http://www.cnblogs.com/vamei/archive/2013/04/29/3051062.html)  
