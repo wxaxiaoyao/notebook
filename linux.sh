@@ -30,8 +30,9 @@
 #vim +PluginInstall +qall  # 安装vim插件
 
 # ngx lua env
-#mkdir -p /ngx_lua
-#cd /ngx_lua
+#ngx_lua_dir=~/workspace/software/ngx_lua
+#mkdir -p $ngx_lua_dir
+#cd $ngx_lua_dir
 # 下载安装包
 # wget https://raw.githubusercontent.com/wxaxiaoyao/notebook/master/software/nginx-1.13.4.tar.gz 
 # wget https://raw.githubusercontent.com/wxaxiaoyao/notebook/master/software/ngx_devel_kit-0.3.0.tar.gz 
@@ -43,7 +44,7 @@
 #tar -zxvf lua-nginx-module-0.10.10.tar.gz
 #tar -zxvf LuaJIT-2.0.5.tar.gz
 # 安装luajit
-#cd /ngx_lua/LuaJIT-2.0.5
+#cd ${ngx_lua_dir}/LuaJIT-2.0.5
 #make 
 #make install
 #export LUAJIT_LIB=/usr/local/lib    
@@ -54,9 +55,9 @@
 #apt-get install -qq -y zlib1g-dev 
 #apt-get install -qq -y libssl-dev
 
-#cd /ngx_lua/nginx-1.13.4
-#./configure --prefix=/nginx --with-ld-opt="-L /usr/local/lib" --add-module=/ngx_lua/ngx_devel_kit-0.3.0 --add-module=/ngx_lua/lua-nginx-module-0.10.10
-#make j2
+#cd ${ngx_lua_dir}/nginx-1.13.4
+#./configure --prefix=/nginx --with-ld-opt="-L /usr/local/lib" --add-module="${ngx_lua_dir}/ngx_devel_kit-0.3.0" --add-module="${ngx_lua_dir}/lua-nginx-module-0.10.10"
+#make 
 #make install
 # 添加nginx到环境变量
 #echo 'PATH=/nginx/sbin:$PATH' >> ~/.profile
@@ -75,7 +76,7 @@
 
 # lua 常用库
 #luarocks install luasql-mysql MYSQL_INCDIR=/usr/include/mysql
-luarocks install lualogging
-luarocks install lua-cjson
-luarocks install luajwt
-luarocks install lua-resty-template
+#luarocks install lualogging
+#luarocks install lua-cjson
+#luarocks install luajwt
+#luarocks install lua-resty-template
