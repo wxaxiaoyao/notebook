@@ -66,6 +66,7 @@
 # 安装luarocks
 #mkdir -p ~/workspace/software
 #cd ~/workspace/software
+#apt-get install -qq -y unzip
 #wget https://raw.githubusercontent.com/wxaxiaoyao/notebook/master/software/luarocks-2.4.1.tar.gz
 #tar -zxvf luarocks-2.4.1.tar.gz
 #cd luarocks-2.4.1

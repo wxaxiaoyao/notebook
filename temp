@@ -63,19 +63,19 @@
 
 
 # 安装luarocks
-#mkdir -p ~/workspace/software
-#cd ~/workspace/software
-#wget https://raw.githubusercontent.com/wxaxiaoyao/notebook/master/software/luarocks-2.4.1.tar.gz
-#tar -zxvf luarocks-2.4.1.tar.gz
-#cd luarocks-2.4.1
-#./configure --lua-suffix=jit --with-lua-include=/usr/local/include/luajit-2.0
-#make bootstrap
+mkdir -p ~/workspace/software
+cd ~/workspace/software
+wget https://raw.githubusercontent.com/wxaxiaoyao/notebook/master/software/luarocks-2.4.1.tar.gz
+tar -zxvf luarocks-2.4.1.tar.gz
+cd luarocks-2.4.1
+./configure --lua-suffix=jit --with-lua-include=/usr/local/include/luajit-2.0
+make bootstrap
 
 # mysql 安装
 
 # lua 常用库
 #luarocks install luasql-mysql MYSQL_INCDIR=/usr/include/mysql
-luarocks install lualogging
-luarocks install lua-cjson
-luarocks install luajwt
-luarocks install lua-resty-template
+#luarocks install lualogging
+#luarocks install lua-cjson
+#luarocks install luajwt
+#luarocks install lua-resty-template
