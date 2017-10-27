@@ -26,7 +26,7 @@
 # 搭建vim环境
 #cd
 #git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim # 安装vim管理插件
-#ln -s ~/workspace/notebook/vim/vimrc .vimrc # 连接vimrc文件
+#ln -s ~/workspace/notebook/vim/vimrc ~/.vimrc # 连接vimrc文件
 #vim +PluginInstall +qall  # 安装vim插件
 
 # ngx lua env
