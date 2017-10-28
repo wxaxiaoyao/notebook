@@ -117,7 +117,7 @@ set autochdir                  "自动切换当前目录为当前文件所在的
 set incsearch                  "输入搜索内容时就显示搜索结果"
 set isk+=-                     "分割符排除 iskeywork
 set nu                         "line number
-set rnu
+"set rnu
 set fdm=marker
 "set hlsearch                   "搜索时高亮显示被找到的文本"
 "}
