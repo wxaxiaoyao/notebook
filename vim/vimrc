@@ -23,6 +23,7 @@ Plugin 'marijnh/tern_for_vim', {'do': 'npm install'} " js补全
 Plugin 'ggVGc/vim-fuzzysearch'                       " 模糊查找
 Plugin 'Valloric/MatchTagAlways'                     " tag匹配高亮
 Plugin 'plasticboy/vim-markdown'                     " markdown插件
+Plugin 'posva/vim-vue'
 
 "Plugin 'mattn/emmet-vim'
 " All of your Plugins must be added before the following line
@@ -137,6 +138,13 @@ autocmd filetype html set dictionary+=$HOME/workspace/notebook/vim/dictionary/ht
 autocmd filetype php set dictionary+=$HOME/workspace/notebook/vim/dictionary/php.dict
 
 " 文件关联
-autocmd BufNewFile,BufRead *.page set filetype=lua
-autocmd BufNewFile,BufRead *.npl set filetype=lua
-autocmd BufNewFile,BufRead *.vue set filetype=html
+autocmd BufNewFile,BufRead *.page setlocal filetype=lua
+autocmd BufNewFile,BufRead *.npl setlocal filetype=lua
+"autocmd BufNewFile,BufRead *.vue setlocal filetype=vue.html.javascript.css
+"autocmd FileType vue syntax sync fromstart
+
+"autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+"autocmd FileType ruby,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+"autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+"autocmd BufRead,BufNewFile *.part set filetype=html
+"autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
