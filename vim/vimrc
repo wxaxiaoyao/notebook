@@ -7,6 +7,8 @@ Bundle 'VundleVim/Vundle.vim'
 " Plugin
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plugin 'fatih/vim-go'
+Plugin 'morhetz/gruvbox'
+"Plugin 'yggdroot/indentline'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'Auto-Pairs'
 Plugin 'The-NERD-tree'
@@ -108,6 +110,7 @@ inoremap <c-k> <up>
 set pastetoggle=<F2>
 "set nowrap
 
+colorscheme darkblue
 set encoding=utf-8                                 " Vim 的内部编码
 set termencoding=utf-8                             " Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
 set fileencoding=utf-8                             " Vim 当前编辑的文件在存储时的编码
@@ -140,8 +143,8 @@ autocmd filetype php set dictionary+=$HOME/workspace/notebook/vim/dictionary/php
 " 文件关联
 autocmd BufNewFile,BufRead *.page setlocal filetype=lua
 autocmd BufNewFile,BufRead *.npl setlocal filetype=lua
-"autocmd BufNewFile,BufRead *.vue setlocal filetype=vue.html.javascript.css
-"autocmd FileType vue syntax sync fromstart
+autocmd BufNewFile,BufRead *.vue setlocal filetype=vue.html.javascript.css
+autocmd FileType vue syntax sync fromstart
 
 "autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
 "autocmd FileType ruby,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
