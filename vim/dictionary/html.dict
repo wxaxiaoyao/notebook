@@ -2,14 +2,6 @@ container
 container-fluid
 btn
 btn-default
-
-
-
 placeholder
-
-ng-model
-ng-click
-
-
 absolute
 relative

@@ -53,7 +53,7 @@ nnoremap <leader><leader>/ :FuzzySearch<cr>
 " ----------------------------------------------------------------------------
 " tabular
 " ----------------------------------------------------------------------------
-"nnoremap <leader>t :Tab /
+nnoremap <leader>t :Tab /
 nnoremap <leader>t" :Tab /"<cr>
 nnoremap <leader>t- :Tab /--<cr>
 nnoremap <leader>t/ :Tab /\/\/<cr>
