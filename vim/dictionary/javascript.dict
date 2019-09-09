@@ -4,3 +4,7 @@ encodeURIComponent
 unescape
 decodeURL
 decodeURIComponent
+setTimeout
+clearTimeout
+setInterval
+clearInterval

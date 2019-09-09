@@ -9,6 +9,7 @@ Bundle 'VundleVim/Vundle.vim'
 " Plugin 'fatih/vim-go'
 Plugin 'morhetz/gruvbox'
 "Plugin 'yggdroot/indentline'
+"Plugin 'prettier/vim-prettier', { 'do': 'npm install'  }
 Plugin 'dkprice/vim-easygrep'
 Plugin 'Auto-Pairs'
 Plugin 'The-NERD-tree'
@@ -26,11 +27,52 @@ Plugin 'ggVGc/vim-fuzzysearch'                       " 模糊查找
 Plugin 'Valloric/MatchTagAlways'                     " tag匹配高亮
 Plugin 'plasticboy/vim-markdown'                     " markdown插件
 Plugin 'posva/vim-vue'
+Plugin 'othree/html5.vim'
+Plugin 'fatih/vim-go'
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
+Plugin 'Tagbar'
 
 "Plugin 'mattn/emmet-vim'
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " reqiored
 " }
+
+" vim-go vim7.4.2009 版本要求忽略
+let g:go_version_warning = 0
+
+" gotags 配置
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
+" ----------------------------------------------------------------------------
+" prettier
+" ----------------------------------------------------------------------------
+let g:prettier#config#tab_width = 4
 
 " ----------------------------------------------------------------------------
 " vim-markdown
@@ -132,7 +174,7 @@ set fdm=marker
 "}
 
 " 字典补全
-set completeopt=longest,menu,preview                               " 补全菜单样式   "
+set completeopt=longest,menu                                " 补全菜单样式   "
 set dictionary+=$HOME/workspace/notebook/vim/dictionary/words.dict " 设置字典文件目录 "
 autocmd filetype javascript set dictionary+=$HOME/workspace/notebook/vim/dictionary/javascript.dict
 autocmd filetype css set dictionary+=$HOME/workspace/notebook/vim/dictionary/css.dict
